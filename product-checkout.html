@@ -1482,6 +1482,24 @@
 
     <!-- Template JS-->
     <script src="js/theme.js"></script>
+
+<!-- Integración de Mercado Pago Start -->
+<div id="mercado_pago_checkout" style="margin-top: 20px;">
+    <button id="checkout-button">Pagar con tarjeta</button>
+    <div id="wallet_container"></div>
+</div>
+<script src="https://sdk.mercadopago.com/js/v2"></script>
+<script>
+   const mp = new MercadoPago("TEST-36b72ba8-083f-411a-87f2-4cf6b5d24725", { locale: "es-AR" });
+   document.getElementById("checkout-button").addEventListener("click", function() {
+       var preferenceId = "YOUR_PREFERENCE_ID"; // Debe reemplazar con su ID de preferencia.
+       mp.bricks().create("wallet", "wallet_container", {
+           initialization: { preferenceId: preferenceId }
+       });
+   });
+</script>
+<!-- Integración de Mercado Pago End -->
+
 </body>
 
 
